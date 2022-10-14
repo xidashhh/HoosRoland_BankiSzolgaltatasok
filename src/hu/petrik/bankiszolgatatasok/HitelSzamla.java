@@ -14,10 +14,11 @@ public abstract class HitelSzamla extends Szamla{
 
     @Override
     public boolean kivesz(int osszeg){
-        if (hitelKeret<osszeg){
+        if (hitelKeret+aktualisEgyenleg<osszeg){
             return false;
         }
         else {
+            aktualisEgyenleg-=osszeg;
             return true;
         }
     }

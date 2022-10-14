@@ -11,4 +11,14 @@ public abstract class HitelSzamla extends Szamla{
         super(tulajdonos);
         this.hitelKeret = hitelKeret;
     }
+
+    @Override
+    public boolean kivesz(int osszeg){
+        if (hitelKeret<osszeg){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }

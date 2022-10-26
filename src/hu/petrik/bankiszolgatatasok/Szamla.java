@@ -21,7 +21,15 @@ public abstract class Szamla extends BankiSzolgaltatas{
 
     //Hiányzik: 4. feladat e.)
 
-    public abstract boolean kivesz(int osszeg);
+    public boolean kivesz(int osszeg){
+        if (aktualisEgyenleg < 0){
+            return false;
+        }
+        else{
+            aktualisEgyenleg -= osszeg;
+            return true;
+        }
+    }
 
     public Kartya ujKartya(String kartyaszam){
         return new Kartya(this.getTulajdonos(), this, kartyaszam);

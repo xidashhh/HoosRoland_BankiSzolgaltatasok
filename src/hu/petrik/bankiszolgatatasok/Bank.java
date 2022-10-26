@@ -11,18 +11,16 @@ public class Bank {
 
 
 
-    public Szamla szamlaNyitas(Tulajdonos tulajdonos, int hitelKeret){
-        if (hitelKeret > 0){
-            HitelSzamla hitelszamla = new HitelSzamla(tulajdonos, hitelKeret);
-            szamlaLista.add(hitelszamla);
-            return new HitelSzamla(tulajdonos, hitelKeret);
-        }
-        else if(hitelKeret == 0){
-            MegtakaritasiSzamla megtakaritasiszamla = new MegtakaritasiSzamla(tulajdonos);
-            szamlaLista.add(megtakaritasiszamla);
-            return new MegtakaritasiSzamla(tulajdonos);
-        }
-        else {
+    public Szamla szamlaNyitas(Tulajdonos tulajdonos, int hitelKeret) {
+        if (hitelKeret > 0) {
+            HitelSzamla hitelSzamla = new HitelSzamla(tulajdonos, hitelKeret);
+            szamlaLista.add(hitelSzamla);
+            return hitelSzamla;
+        } else if (hitelKeret == 0) {
+            MegtakaritasiSzamla megtakaritasiSzamla = new MegtakaritasiSzamla(tulajdonos);
+            szamlaLista.add(megtakaritasiSzamla);
+            return megtakaritasiSzamla;
+        } else {
             throw new IllegalArgumentException("A hitelkeret nem lehet negatív!");
         }
     }
@@ -56,7 +54,7 @@ public class Bank {
 
         long ossz = 0;
         for (Szamla aktualis : szamlaLista) {
-            if (szamlaLista instanceof HitelSzamla){
+            if (aktualis instanceof HitelSzamla){
                 ossz += ((HitelSzamla) aktualis).getHitelKeret();
             }
         }
